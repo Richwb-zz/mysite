@@ -1,0 +1,11 @@
+.fieldspacing{
+    margin-bottom: 5px;
+}
+
+.form-margin{
+    padding: 10px;
+}
+
+input:required, textarea:required {
+    box-shadow:none;
+}

@@ -1,0 +1,13 @@
+/* CSS content for just the body */
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    background-color:grey;
+}
+
+#root{
+    margin-bottom: 40px;
+}

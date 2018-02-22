@@ -1,0 +1,10 @@
+/* CSS elements for universal use */
+
+.content-window{
+    background-color:white;
+    margin-top: 10px;
+}
+
+.white-font{
+    color: white;
+}
