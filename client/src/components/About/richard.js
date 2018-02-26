@@ -11,7 +11,7 @@ const About = props => {
             <div className="row">
                 <div className="col-md-12">
                     <p>
-                        Richard is a IT professional with two and a half years experiance in the telecommuncations industry.     
+                        Richard is an IT professional with two and a half years experiance in the telecommuncations industry.     
                     </p>
                     <p>
                         Being able to assist or educate others has always been his driving force to excel in his fields of work.
@@ -30,15 +30,6 @@ const About = props => {
                     <p>
                         I'm sure you have more questions. Head on over to the <Link to="/faq">FAQ</Link> or the <Link to="/contact">contact form</Link>.
                     </p>
-                    <h2>Where Next?</h2>
-                        <h3>1-2 Years</h3>
-                            <p>Full Stack Javascript devloper eating, drinking, dreaming in code. </p>
-                        <h3>3-5 Years</h3>
-                            <p>Mid level developer skilled in web and mobile development</p>
-                        <h3>6-10 Years</h3>
-                            <p>Senior developer working on large scale applications in a large market</p>
-                        <h3>10+ Years</h3>
-                            <p>Remotely working on a beach in the caribbean</p>
                 </div>
             </div>
         </div>

@@ -1,0 +1,10 @@
+.project-background{
+    background-color: yellow;
+    border: 1px solid grey;
+    border-radius: 25px;
+    margin: 20px;
+}
+
+.content-padding{
+    padding:5px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 // CSS file only used by the navbar component
 import './navbar.css';
 // CSS file with elements for universal use
@@ -17,10 +17,18 @@ const navbar = props => {
                     {/* Link tags used to create anchor for react router */}
                     <nav className="nav d-flex justify-content-end col-md-8">
                         <Link to='/' className="nav-link active">Home</Link>
-                        <Link to='/about' className="nav-link">About</Link>
+                        <div className="dropdown show">
+                            <a id="aboutDropDown" className="nav-link dropdown-toggle" href="https://www.richwbates.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                About
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <Link to='/about/richard' className="nav-link">Richard</Link>
+                                <Link to='/about/website' className="nav-link">Website</Link>
+                            </div>
+                        </div>
                         <Link to='/faq' className="nav-link">FAQ</Link>
-                        <a className="nav-link">Portfolio</a>
-                        <Link to='/resume' className="nav-link">Resume</Link>
+                        <Link to='/portfolio' className="nav-link">Portfolio</Link>
+                        <a className="nav-link" href="https://drive.google.com/open?id=14pYYZBYZzmGQGjPut2FTnWN3A7L-k_CI" target="_blank" rel="noopener">Resume</a>
                         <Link to='/contact' className="nav-link">Contact</Link>
                     </nav>
                 </div>
