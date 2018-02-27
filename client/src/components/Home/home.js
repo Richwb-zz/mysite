@@ -5,6 +5,8 @@ import "../global.css";
 import "./home.css";
 
 const Home = props => {
+    
+    
     return(
         // content-window is a global css class
         <div className="container content-window">

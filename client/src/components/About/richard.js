@@ -1,12 +1,13 @@
-// About me page
-
+// Import React component
 import React from 'react';
+/* Import the link react-router-dom.
+   Is used for react router to direct to the correct component to display */
 import {Link } from 'react-router-dom';
+// import the global.css file found in src route
 import "../global.css";
 
 const About = props => {
     return(
-        // content-window is a global css class
         <div className="container content-window">
             <div className="row">
                 <div className="col-md-12">
