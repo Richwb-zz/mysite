@@ -22,19 +22,15 @@ const createGrid = () => {
         along with the relative information from the other arrays based on project array index */
         projects.map((projectName, index) => {
             return (                  
-                <div className="p-3">
-                    <div className="row content-padding">
-                        <div className="col-md-12 ">
-                            <div className="row ">
-                                <div className="card">
-                                    <div className="card-header">
-                                        <h4><a href={projectLinks[index]} target="_blank">{projectName}</a></h4>
-                                    </div>
-                                    <div className="card-body">
-                                        <p>{description[index]}</p>
-                                        <p>Take a look at what makes it tick: <a href={repoLinks[index]} target="_blank">Github</a></p>
-                                    </div>
-                                </div>
+                <div key={projectName +"-box"} className="p-3">
+                    <div key={projectName +"row"} className="row content-padding">
+                        <div key={projectName +"-card"} className="card">
+                            <div key={projectName +"-header"} className="card-header">
+                                <h4 key={projectName +"h4"}><a key={projectName +"-page"} href={projectLinks[index]} target="_blank">{projectName}</a></h4>
+                            </div>
+                            <div key={projectName +"-body"} className="card-body">
+                                <p key={projectName +"-description"}>{description[index]}</p>
+                                <p key={projectName +"-gitcomment"}>Take a look at what makes it tick: <a href={repoLinks[index]} key={projectName +"-github"} target="_blank">Github</a></p>
                             </div>
                         </div>
                     </div>

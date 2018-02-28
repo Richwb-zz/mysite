@@ -5,11 +5,11 @@ const FAQ = props => {
     return (
 
         <div className="container content-window">
-            <a data-toggle="collapse" href="#faq-future" role="button" aria-expanded="false" aria controls="faq-future">
+            <a data-toggle="collapse" href="#faq-future" role="button" aria-expanded="false" aria-controls="faq-future">
                 <h5>Where do you see yourself...?</h5>
             </a>
             <div id="faq-future" className="collapse">
-                <div class="card card-body">
+                <div className="card card-body">
                     <p className="font-weight-bold">1-2 Years</p>
                         <p>Full Stack Javascript developer eating, drinking, dreaming in code. </p>
                     <p className="font-weight-bold">3-5 Years</p>
@@ -21,12 +21,12 @@ const FAQ = props => {
                 </div>
             </div>
         
-            <a data-toggle="collapse" href="#faq-strength" role="button" aria-expanded="false" aria controls="faq-strength">
+            <a data-toggle="collapse" href="#faq-strength" role="button" aria-expanded="false" aria-controls="faq-strength">
                 <h5>Greatest Strength?</h5>
             </a>
 
             <div id="faq-strength" className="collapse">
-                <div class="card card-body">
+                <div className="card card-body">
                     <ol>
                         <li>My love for what I do gives me the ability to push myself to learn, grow, adapt and overcome any challenges</li>
                         <li>
@@ -45,21 +45,21 @@ const FAQ = props => {
                     </ol>
                 </div>
             </div>
-            <a data-toggle="collapse" href="#faq-weakness" role="button" aria-expanded="false" aria controls="faq-weakness">
+            <a data-toggle="collapse" href="#faq-weakness" role="button" aria-expanded="false" aria-controls="faq-weakness">
                 <h5>Greatest Weakness?</h5>
             </a>
 
             <div id="faq-weakness" className="collapse">
-                <div class="card card-body">
+                <div className="card card-body">
                     Remembering, anything I won't be working on immediately I write down to ensure it gets done. Names and faces can also take me awhile.
                 </div>
             </div>
-            <a data-toggle="collapse" href="#faq-conflict" role="button" aria-expanded="false" aria controls="faq-conflect">
+            <a data-toggle="collapse" href="#faq-conflict" role="button" aria-expanded="false" aria-controls="faq-conflect">
                 <h5>Tell me a time when you had a conflict with a co-worker.</h5>
             </a>
 
             <div id="faq-conflict" className="collapse">
-                <div class="card card-body">
+                <div className="card card-body">
                     I have always gotten along with my co-workers and so have never had to face this problem, thankfully. But, If I did:
                     <ol>
                         <li>Have a civil conversation with the co-worker to see where the issue between us lies then work on a way to improve the situation</li>

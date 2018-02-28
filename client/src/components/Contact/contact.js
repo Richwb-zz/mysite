@@ -99,10 +99,10 @@ class Contact extends Component {
                     return(
                         // Set the htmlFor with the name of the field and set the input id to the fields array name
                         <div key={field + "-spacing"} className="row fieldspacing">
-                            <div className="col-md-2 offset-md-3">
+                            <div key={field + "-labelcol"} className="col-md-2 offset-md-3">
                                 <label key={field + "-label"} htmlFor={field} className="font-weight-bold">{labels[index]}</label>
                             </div>
-                            <div className="col-md-3">
+                            <div key={field + "-inputcol"} className="col-md-3">
                                 <input key={field + "-input"} id={field} type="text" tabIndex={index + 1} onChange={this.handleChange.bind(this, field)} />
                             </div>
                             {/* Ternary if statement to check if the errors field for that input has been set. If so display the column with the error message
@@ -116,7 +116,7 @@ class Contact extends Component {
                 })},
                 {/* not in .map loop as it is a text area not an input field */}
                 <div className="row">
-                    <div className="col-md-1 offset-md-3">
+                    <div key={"message-labelcol"} className="col-md-1 offset-md-3">
                         <label key="message-label" htmlFor="message" className="font-weight-bold">Message:</label>
                     </div>
                     {/* Ternary if statement to check if the errors field for that input has been set. If so display the column with the error message
@@ -127,14 +127,14 @@ class Contact extends Component {
                     }
                 </div>
                 {/* When user takes finger off the key onKeyUp calls the handleChange function */}
-                <div className="row">
-                    <div className="col-md-9 offset-md-3">
+                <div key={"message-messagerow"} className="row">
+                    <div key={"message-textcol"} className="col-md-9 offset-md-3">
                         <textarea key="message-textarea" id="message" rows="6" cols="50" tabIndex="4" onKeyUp={this.handleChange.bind(this, "message")} ></textarea>
                     </div>
                 </div>
-                <div className="row">
-                <div className="col-md-12 text-center">
-                    <button>Submit</button>
+                <div key={"submit-row"} className="row">
+                <div key={"submit-col"} className="col-md-12 text-center">
+                    <button key={"message-submit"}>Submit</button>
                 </div>
                 </div>
             </form>
