@@ -9,3 +9,7 @@
 input:required, textarea:required {
     box-shadow:none;
 }
+
+.error{
+    color: red;
+}

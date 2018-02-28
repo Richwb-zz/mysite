@@ -28,7 +28,7 @@ const navbar = props => {
                         </div>
                         <Link to='/faq' className="nav-link">FAQ</Link>
                         <Link to='/portfolio' className="nav-link">Portfolio</Link>
-                        <a className="nav-link" href="https://drive.google.com/open?id=14pYYZBYZzmGQGjPut2FTnWN3A7L-k_CI" target="_blank" rel="noopener">Resume</a>
+                        <a className="nav-link" href="https://drive.google.com/open?id=14pYYZBYZzmGQGjPut2FTnWN3A7L-k_CI" target="_blank" rel="noopener noreferrer">Resume</a>
                         <Link to='/contact' className="nav-link">Contact</Link>
                     </nav>
                 </div>
