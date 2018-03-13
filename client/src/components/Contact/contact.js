@@ -1,36 +1,37 @@
 // Conact Form
 
 import React, {Component} from 'react';
+// Create form Component
+import CreateForm from "./createform";
+// create submit button component
+import Submit from "./fields/submit.js";
+// API for comment submission
+import API from "../../api/api";
+// CSS files
 import '../global.css';
 import './contact.css';
 
 
 class Contact extends Component {
-// Form object: Holds user input for the matching field
-// Form errors: Holds error message or false if no errors for matching field
-// Errors: Quick referance set to true if one of the form errors is set or false if all of the form errors are false
-
+    
+    // form object holds information regarding each field in order to create it as well as the content the user is typing into it and error comments
+    // errors is a general error flag that is switch should any of the check conditions match.
     state = {
-        form: {
-            fname: "",
-            lname: "",
-            email: "",
-            message: ""
-        },
-        formErrors: {
-            fnameError: false,
-            lnameError: false,
-            emailError: false,
-            messageError: false
-        },
+        form: [
+            {label: "First Name", name: "fname", input: "textbox", type: "text", content: "", error: ""},
+            {label: "Last Name", name: "lname", input: "textbox", type: "text", content: "", error: false},
+            {label: "Email Address", name: "email", input: "textbox", type: "email", content: "", error: false},
+            {label: "Comment", name: "comment", input:"textarea", type: "", content: "", error: false}
+        ],
         errors: false
     }
 
     // updates the state form object as user enters details
     // Makes a copy (newForm) of the state form object, updates newForm with the new input info, sets the state of form using newForm
-    handleChange = (fieldName, event) => {
-        let newForm = this.state.form;
-        newForm[fieldName] = event.target.value;
+    handleChange = event => {
+        const index = event.target.dataset.index;
+        let newForm = [...this.state.form];
+        newForm[index]["content"] = event.target.value;
         this.setState({form: newForm});
     };
 
@@ -38,116 +39,61 @@ class Contact extends Component {
     checkForm = event => {
         // Stops page from refreshing
         event.preventDefault();
-        
-        // Copy State form Errors to variable called errors to hold updated information
-        let errors = this.state.formErrors;
-        // Ensure that the general errors flah is cleared
+        // hold state form in const called form for shorter reference
+        const form = this.state.form;
+        // Ensure that the general errors flag is cleared
         this.setState({errors: false});
 
-        // turn the state form object into an array then loop through it with map
-        // i is the object key
-        Object.keys(this.state.form).map(i => {
+        // Loop though the form elements and validate inputs
+        for(let index in form){
             
-            // reset error to false to clear out any previous errors for that key
-            errors[i + "Error"] = false;
-
-            // If key is "fname" or "lname" ensure that value only contains letters.    
-            if(i === "fname" || i === "lname"){
-                if(!/^[a-zA-Z]+$/.test(this.state.form[i])){
-                    errors[i + "Error"] = "Can only contain letters";
-                    this.setState({errors: true});
-                }
-            }
-
-            // If key is "email" verify that the email has all neccesary parts (<address> @ domain .<top level domain>). 
-            // check for invalid characters
-            if(i === "email"){
-                if(!/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(this.state.form[i])){
-                    errors[i + "Error"] = "Not a valid email address";
-                    this.setState({errors: true});
-                }
-            }
+            // Set current form index to field for legibility;
+            const field = form[index];
+            // reset error to false to clear out any previous errors for that field
+            this.setState({[field["error"]] : false});
             
-            // If the value of the key is empty set error message for the field and set errors to true
-            if(this.state.form[i] === ""){
-                errors[i + "Error"] = "Field cannot be blank";
+            // If content of field is empty set error message for the field and set errors to true
+            if(field.content === ""){
+                // If true set state of general error and field error
+                field.error = "Field cannot be blank";
+                this.setState({[form[index]] : field});
                 this.setState({errors: true});
-             }
+            }else{
+            
+                // If name is "fname" or "lname" ensure that content only contains letters.   
+                 if(field.name === ("fname" || "lname") && !/^[a-zA-Z]+$/.test(field.content)){
+                    // If true set state of general error and field error
+                    field.error = "Can only contain letters";
+                    this.setState({[form[index]] : field});
+                    this.setState({errors: true});
+                }
 
-           return null;
-        })
-       
-        // Set state for formErrors to the new values in the errors object
-        this.setState({formErrors: errors});
+                // If content is "email" verify that the email has all neccesary parts (<address> @ domain .<top level domain>). 
+                if(field.type === "email" && !/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(field.content)){
+                    // If true set state of general error and field error
+                    field.error = "Not a valid email address"
+                    this.setState({[form[index]] : field});
+                    this.setState({errors: true});
+                }
+            
+            }
+        };
 
+        // If no error call API
         if(!this.state.errors){
-
+            // API.submitMessage();
         }
     };
     
-    // Creates the form
-    buildContactForm = () =>{
-        // List of field ids
-        const fields=["fname","lname","email"];
-        // Labels for the fields
-        const labels=["First Name","Last Name","Email"];
-        
-        return(
-            <form id="contactform" className="form-margin" onSubmit={this.checkForm}>
-                {/* Loop through the fields array using .map and create a label and input field with each one */}
-                {fields.map((field, index) => {
-                    return(
-                        // Set the htmlFor with the name of the field and set the input id to the fields array name
-                        <div key={field + "-spacing"} className="row fieldspacing">
-                            <div key={field + "-labelcol"} className="col-md-2 offset-md-3">
-                                <label key={field + "-label"} htmlFor={field} className="font-weight-bold">{labels[index]}</label>
-                            </div>
-                            <div key={field + "-inputcol"} className="col-md-3">
-                                <input key={field + "-input"} id={field} type="text" tabIndex={index + 1} onChange={this.handleChange.bind(this, field)} />
-                            </div>
-                            {/* Ternary if statement to check if the errors field for that input has been set. If so display the column with the error message
-                                by calling the state for that inputs error. Error class for error div displays the text in red  */}
-                            {this.state.formErrors[field + "Error"] ? 
-                                <div key={field + "-error"} className="col-md-3 error">{this.state.formErrors[field + "Error"]}</div>
-                                : (null)
-                            }
-                        </div>
-                    );
-                })},
-                {/* not in .map loop as it is a text area not an input field */}
-                <div className="row">
-                    <div key={"message-labelcol"} className="col-md-1 offset-md-3">
-                        <label key="message-label" htmlFor="message" className="font-weight-bold">Message:</label>
-                    </div>
-                    {/* Ternary if statement to check if the errors field for that input has been set. If so display the column with the error message
-                        by calling the state for that inputs error. Error class for error div displays the text in red */}
-                    {this.state.formErrors["messageError"] ? 
-                        <div key="message-error" className="col-md-3 error">{this.state.formErrors["messageError"]}</div>
-                        : (null)
-                    }
-                </div>
-                {/* When user takes finger off the key onKeyUp calls the handleChange function */}
-                <div key={"message-messagerow"} className="row">
-                    <div key={"message-textcol"} className="col-md-9 offset-md-3">
-                        <textarea key="message-textarea" id="message" rows="6" cols="50" tabIndex="4" onKeyUp={this.handleChange.bind(this, "message")} ></textarea>
-                    </div>
-                </div>
-                <div key={"submit-row"} className="row">
-                <div key={"submit-col"} className="col-md-12 text-center">
-                    <button key={"message-submit"}>Submit</button>
-                </div>
-                </div>
-            </form>
-        ); 
-    
-    }
-     
     render(){
         return (
-            <div className="container content-window">
-                {/* Calls buildContactForm to create the form */}
-                {this.buildContactForm()}
-            </div>
+            // Comment form
+            <form key="form-container" className="container content-window" onSubmit={(event) => this.checkForm(event)}>
+                {/* Calls createForm component to create the form */}
+                <CreateForm key="contact-form" form={this.state.form} handleChange={() => this.handleChange.bind(this)} />
+                {/* Calls Submit component to create submit button */}
+                <Submit index={this.state.form.length} />
+            </form>
         );
     };
 }

@@ -1,7 +1,7 @@
-Axios require 'axios'
+import axios from "axios";
 
 export default {
-    sendcomment: (contactForm) =>{
+    submitMessage: (contactForm) =>{
         return axios.post("/comment/", contactForm)
             .then(response =>{
                 return response
