@@ -1,15 +1,15 @@
+// API Calls to node server
+
 import axios from "axios";
 
 export default {
-    submitMessage: (contactForm) =>{
-        return axios.post("/comment/", contactForm)
+    // processes form submission of contact page with handleResult as a callback
+    submitMessage: (contactForm, handleResult) =>{
+        axios.post("/api/comment",contactForm)
             .then(response =>{
-                return response
+                handleResult(response);
             }).catch(error => {
-                if(error){
-                    return error
-                }
+                if(error) handleResult(error);
             });
-
     }
 }

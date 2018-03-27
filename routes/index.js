@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const checkForm  = require("../formsubmit.js");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.post('/comment', function(req, res, next) {
+  console.log(req);
+  result = checkForm(req.body);
+  res.json(result);
 });
+
 
 module.exports = router;

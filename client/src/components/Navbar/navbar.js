@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 // CSS file only used by the navbar component
 import './navbar.css';
 // CSS file with elements for universal use
-import '../global.css'
+import '../global.css';
 
 const navbar = props => {
     return (
