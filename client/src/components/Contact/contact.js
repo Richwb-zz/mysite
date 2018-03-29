@@ -113,7 +113,7 @@ class Contact extends Component {
 
     // sets submit from to true and processes submit message API as callback with a nested call back to handle the results
     submitMessage(){
-        API.submitMessage(this.state.form, this.state.formRecaptcha, this.handleResult);
+        API.submitMessage(this.state.form, this.handleResult);
     }
 
     handleResult = (result) => {
