@@ -21,7 +21,7 @@ class CreateForm extends Component {
             }
         })
     }
-    
+
     render () {
         return (
             this.form()

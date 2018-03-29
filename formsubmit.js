@@ -1,10 +1,18 @@
 const sanitizeHTML = require('sanitize-html');
+const recaptchaApi = require("./recaptcha.js");
 
 checkForm = form => {
-    let formCopy = form;
+    let formCopy = {...form};
 
     // General error flag
     let error = false;
+
+    if(form.recaptcha === null){
+        error = true;
+    }
+
+    recaptchaApi(form.recaptcha);
+
     // Loop though the form elements and validate content property
     for(let i = 0, length = formCopy.form.length; i < length; i++){
 
@@ -17,7 +25,6 @@ checkForm = form => {
         field.content = content;
 
         //content = sanitizeHtml(content);
-  
         if(content === 0){
             fieldError = "Field cannot be blank";
             error = true;

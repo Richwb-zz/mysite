@@ -4,7 +4,6 @@ const checkForm  = require("../formsubmit.js");
 
 /* GET home page. */
 router.post('/comment', function(req, res, next) {
-  console.log(req);
   result = checkForm(req.body);
   res.json(result);
 });
