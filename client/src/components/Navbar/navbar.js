@@ -12,10 +12,10 @@ const navbar = props => {
             <div className="container"> 
                 <div className="row">
                     {/* Justifies content to the left(start) */}
-                    <div className="d-flex justify-content-start col-md-4 my-auto">Richard Bates</div>
+                    <div className="d-flex justify-content-md-start justify-content-xs-center col-md-4 col-xs-12 my-auto">Richard Bates</div>
                     {/* Justifies content to the right(start) */}
                     {/* Link tags used to create anchor for react router */}
-                    <nav className="nav d-flex justify-content-end col-md-8">
+                    <nav className="nav d-flex justify-content-md-end col-md-8 col-xs-5">
                         <Link to='/' className="nav-link active">Home</Link>
                         <div className="dropdown show">
                             <a id="aboutDropDown" className="nav-link dropdown-toggle" href="https://www.richwbates.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

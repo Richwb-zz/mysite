@@ -19,7 +19,6 @@ const Home = props => {
                     <div className="text-center">Richard Bates</div>
                 
                     <div className="text-center">Full Stack Javascript Developer</div>
-                    <div>Welcome! Feel free to take off your shoes and stay awhile.</div>
                     <div className="text-center">
                         <a href="https://github.com/Richwb">
                             <img className="logo-margin" src={process.env.PUBLIC_URL + "/images/GitHub-Mark-64px.png"} alt="github logo" />
